@@ -73,27 +73,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Hakka Blind Box — Mama's hand, sealed in a box" },
+      { title: "Mangshi 盲食 — 阿嬤的手，封進盒子裡" },
       {
         name: "description",
         content:
-          "An experiential platform reviving Hakka food culture for Taiwan students by rescuing surplus farm produce and serving it as sealed surprise meals.",
+          "由學生發起的剩食計畫：搶救台灣農地的剩食，用客家阿嬤的方式煮成一頓封盒驚喜餐。An experiential platform reviving Hakka food culture for Taiwan students by rescuing surplus farm produce and serving it as sealed surprise meals.",
       },
-      { property: "og:title", content: "Hakka Blind Box — Mama's hand, sealed in a box" },
+      { property: "og:title", content: "Mangshi 盲食 — 阿嬤的手，封進盒子裡" },
       {
         property: "og:description",
         content:
           "Hakka heritage meals from rescued surplus produce — served blind, so flavor and ingredients speak first.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Hakka Blind Box" },
+      { property: "og:site_name", content: "Mangshi 盲食" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Hakka Blind Box — Mama's hand, sealed in a box" },
-      { name: "description", content: "Culinary Canvas offers an immersive digital experience celebrating Hakka culture through food, featuring educational videos and a unique blind box meal service." },
-      { property: "og:description", content: "Culinary Canvas offers an immersive digital experience celebrating Hakka culture through food, featuring educational videos and a unique blind box meal service." },
-      { name: "twitter:description", content: "Culinary Canvas offers an immersive digital experience celebrating Hakka culture through food, featuring educational videos and a unique blind box meal service." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fb7eede5-fc1b-49a1-a2fa-603baf3ef208/id-preview-9bc6de00--c6b408f5-408b-4896-aa4e-5e4c94896e42.lovable.app-1778691654569.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fb7eede5-fc1b-49a1-a2fa-603baf3ef208/id-preview-9bc6de00--c6b408f5-408b-4896-aa4e-5e4c94896e42.lovable.app-1778691654569.png" },
+      { name: "twitter:title", content: "Mangshi 盲食 — 阿嬤的手，封進盒子裡" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -112,7 +107,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
-  return <LanguageProvider><Document>{children}</Document></LanguageProvider>;
+  return (
+    <LanguageProvider>
+      <Document>{children}</Document>
+    </LanguageProvider>
+  );
 }
 
 function Document({ children }: { children: React.ReactNode }) {
