@@ -25,6 +25,7 @@ function SystemLayout() {
     { to: "/system/match", label: t("sys.tab.match") },
     { to: "/system/kitchen", label: t("sys.tab.kitchen") },
     { to: "/system/impact", label: t("sys.tab.impact") },
+    { to: "/system/recipes", label: t("sys.tab.recipes") },
   ] as const;
 
   return (

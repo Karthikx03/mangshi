@@ -210,7 +210,7 @@ export const translations = {
 
   "mission.numbers.kicker": { en: "The numbers", zh: "數字" },
   "mission.numbers.title": {
-    en: "What \"sell more, lose more\" really looks like.",
+    en: 'What "sell more, lose more" really looks like.',
     zh: "「賣得越多,賠得越多」的真實樣貌。",
   },
 
@@ -244,7 +244,10 @@ export const translations = {
   },
 
   "mission.loop.kicker": { en: "The loop", zh: "迴圈" },
-  "mission.loop.title": { en: "Rescue · Cook · Seal · Surprise.", zh: "搶救 · 烹煮 · 封盒 · 驚喜。" },
+  "mission.loop.title": {
+    en: "Rescue · Cook · Seal · Surprise.",
+    zh: "搶救 · 烹煮 · 封盒 · 驚喜。",
+  },
   "mission.loop1.title": { en: "Rescue", zh: "搶救" },
   "mission.loop1.body": {
     en: "Daily pick-ups from cooperative farms in Taoyuan, Hsinchu and Miaoli — produce that would have been tilled under.",
@@ -292,12 +295,19 @@ export const translations = {
   "join.role.farm": { en: "Farmer / cooperative", zh: "農民 / 合作社" },
   "join.role.school": { en: "School / university", zh: "學校 / 大學" },
   "join.role.volunteer": { en: "Volunteer or cook", zh: "志工或廚師" },
-  "join.field.note": { en: "Anything we should know? (optional)", zh: "還有什麼想告訴我們的?(選填)" },
+  "join.field.note": {
+    en: "Anything we should know? (optional)",
+    zh: "還有什麼想告訴我們的?(選填)",
+  },
   "join.field.note.ph": {
     en: "Allergies, your campus, why you're interested…",
     zh: "過敏、你的校園、為什麼有興趣……",
   },
   "join.submit": { en: "Reserve my box", zh: "預訂我的盲盒" },
+  "join.error": {
+    en: "Something went wrong — please try again in a moment.",
+    zh: "送出時發生問題，請稍後再試一次。",
+  },
 
   "join.farmers.title": { en: "For farmers", zh: "給農夫" },
   "join.farmers.body1": {
@@ -311,7 +321,10 @@ export const translations = {
   },
 
   // ---------- SEASONS / SURPLUS CALENDAR ----------
-  "seasons.kicker": { en: "Surplus Calendar · 產季剩食月曆", zh: "產季剩食月曆 · Surplus Calendar" },
+  "seasons.kicker": {
+    en: "Surplus Calendar · 產季剩食月曆",
+    zh: "產季剩食月曆 · Surplus Calendar",
+  },
   "seasons.title1": { en: "Every month has its", zh: "每個月,都有" },
   "seasons.title2": { en: "overflow.", zh: "吃不完的收成。" },
   "seasons.body": {
@@ -357,6 +370,7 @@ export const translations = {
   "sys.tab.match": { en: "Matching", zh: "菜單配對" },
   "sys.tab.kitchen": { en: "Kitchen", zh: "廚房" },
   "sys.tab.impact": { en: "Impact", zh: "影響力" },
+  "sys.tab.recipes": { en: "Recipes", zh: "食譜庫" },
 
   "sys.kicker": { en: "The system behind the box", zh: "盒子背後的系統" },
   "sys.title": { en: "Technology never replaces grandmother's hands.", zh: "科技不取代阿嬤的手" },
@@ -392,6 +406,10 @@ export const translations = {
   "sys.supply.confirmDelete": {
     en: "Are you sure you want to delete this entry?",
     zh: "確定要刪除這筆資料嗎？",
+  },
+  "sys.supply.syncWarning": {
+    en: "That change saved to this device only — it did not sync to the server, so other devices still show the old data. Please retry once you're back online.",
+    zh: "這項變更僅儲存在此裝置，尚未同步到伺服器，其他裝置仍會看到舊資料。請於恢復連線後重試。",
   },
 
   "sys.order.title": { en: "Campus preorders", zh: "校園預訂" },
@@ -448,6 +466,14 @@ export const translations = {
   "sys.impact.farmers": { en: "participating farms", zh: "參與農友" },
   "sys.impact.revenue": { en: "NT$ back to farmers", zh: "元回到農友手中" },
   "sys.impact.co2": { en: "kg CO2e avoided", zh: "公斤碳排減量" },
+  "sys.recipes.title": { en: "Mama Recipe Library", zh: "媽媽食譜庫" },
+  "sys.recipes.body": {
+    en: "The standardized recipe library the matcher scales from — nothing invented, nothing off this list.",
+    zh: "配對系統唯一會使用的標準食譜庫 —— 不創造菜色，只從這份清單裡選。",
+  },
+  "sys.recipes.count": { en: "recipes", zh: "道食譜" },
+  "sys.recipes.batch": { en: "max batch", zh: "單批上限" },
+  "sys.recipes.cost": { en: "cost", zh: "成本" },
   "sys.impact.note": {
     en: "Figures are computed live from logged supply, confirmed preorders and the matcher. Farmer revenue uses NT$18/kg; emissions use 2.0 kg CO2e per kg of food waste avoided.",
     zh: "數據由登錄的剩食、已確認預訂與配對結果即時計算。農友收入以每公斤 18 元估算,碳排以每公斤剩食 2.0 公斤 CO2e 計算。",
