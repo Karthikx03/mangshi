@@ -126,6 +126,11 @@ function SupplyScreen() {
   const execDeletePreorder = useServerFn(deletePreorder);
   const execUpdatePreorder = useServerFn(updatePreorder);
 
+  // Edits/deletes are applied to a local (this-device-only) override immediately so the UI
+  // feels instant, then sent to the server. If the server call fails, the change still shows
+  // here but has NOT synced to Supabase or to anyone else — surface that instead of hiding it.
+  const [syncWarning, setSyncWarning] = useState(false);
+
   const [farmer, setFarmer] = useState("");
   const [veg, setVeg] = useState<string>(VEG_OPTIONS[0].veg_key);
   const [kg, setKg] = useState("");
@@ -151,10 +156,7 @@ function SupplyScreen() {
 
   const label = (zh: string, en: string) => (lang === "zh" ? zh : en);
 
-  const refresh = useCallback(
-    () => qc.invalidateQueries({ queryKey: ["system-data"] }),
-    [qc],
-  );
+  const refresh = useCallback(() => qc.invalidateQueries({ queryKey: ["system-data"] }), [qc]);
 
   const onSupply = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -196,6 +198,7 @@ function SupplyScreen() {
       await execDeleteSupply({ data: { id } });
     } catch (e) {
       console.warn("Server delete supply failed, local override applied", e);
+      setSyncWarning(true);
     }
     await refresh();
   };
@@ -234,6 +237,7 @@ function SupplyScreen() {
       });
     } catch (e) {
       console.warn("Server update supply failed, local override applied", e);
+      setSyncWarning(true);
     }
     setEditingSupplyId(null);
     await refresh();
@@ -246,6 +250,7 @@ function SupplyScreen() {
       await execDeletePreorder({ data: { id } });
     } catch (e) {
       console.warn("Server delete preorder failed, local override applied", e);
+      setSyncWarning(true);
     }
     await refresh();
   };
@@ -268,6 +273,7 @@ function SupplyScreen() {
       });
     } catch (e) {
       console.warn("Server update preorder failed, local override applied", e);
+      setSyncWarning(true);
     }
     setEditingOrderId(null);
     await refresh();
@@ -279,8 +285,7 @@ function SupplyScreen() {
     "mt-6 inline-flex items-center gap-2 border border-foreground px-6 py-3 text-[11px] uppercase tracking-[0.25em] hover:bg-foreground hover:text-background transition-colors disabled:opacity-50";
   const inlineField =
     "bg-transparent border-b border-input py-1 text-sm focus:outline-none focus:border-foreground transition-colors";
-  const smallBtn =
-    "px-3 py-1.5 text-[10px] uppercase tracking-[0.2em] border transition-colors";
+  const smallBtn = "px-3 py-1.5 text-[10px] uppercase tracking-[0.2em] border transition-colors";
 
   return (
     <main className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16">
@@ -288,6 +293,12 @@ function SupplyScreen() {
         <h1 className="font-display text-3xl sm:text-4xl md:text-5xl">{t("sys.supply.title")}</h1>
         <p className="mt-3 text-clay max-w-xl text-sm sm:text-base">{t("sys.supply.body")}</p>
       </Reveal>
+
+      {syncWarning && (
+        <p className="mt-6 border border-red-300 bg-red-50 dark:bg-red-950/30 px-4 py-3 text-sm text-red-700 dark:text-red-400">
+          {t("sys.supply.syncWarning")}
+        </p>
+      )}
 
       <div className="mt-12 grid gap-10 lg:grid-cols-2">
         <Reveal className="border border-border p-6 sm:p-8">
@@ -355,9 +366,7 @@ function SupplyScreen() {
             <button className={btn} disabled={state === "saving"}>
               {state === "saving" ? t("sys.supply.saving") : t("sys.supply.submit")}
             </button>
-            {state === "saved" && (
-              <p className="mt-4 text-sm text-sage">{t("sys.supply.saved")}</p>
-            )}
+            {state === "saved" && <p className="mt-4 text-sm text-sage">{t("sys.supply.saved")}</p>}
           </form>
         </Reveal>
 
@@ -461,7 +470,9 @@ function SupplyScreen() {
                   /* ---- Normal display mode ---- */
                   <div className="flex items-center justify-between gap-4">
                     <div className="min-w-0">
-                      <p className="font-display text-xl">{lang === "zh" ? s.name_zh : s.name_en}</p>
+                      <p className="font-display text-xl">
+                        {lang === "zh" ? s.name_zh : s.name_en}
+                      </p>
                       <p className="text-xs text-clay mt-1">
                         {s.farmer_name} · {t("sys.supply.window")} {s.available_from} →{" "}
                         {s.available_to}
