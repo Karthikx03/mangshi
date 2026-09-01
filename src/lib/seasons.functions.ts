@@ -1,30 +1,14 @@
 import { createServerFn } from "@tanstack/react-start";
-import { createClient } from "@supabase/supabase-js";
-import type { Database } from "@/integrations/supabase/types";
 import type { Recipe, SurplusRow } from "./seasons";
 
 export const getSeasonalCalendar = createServerFn({ method: "GET" }).handler(async () => {
-  const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
-  const supabase = createClient<Database>(process.env["SUPABASE_URL"]!, key, {
-    auth: { persistSession: false, autoRefreshToken: false },
-    global: {
-      fetch: (input: RequestInfo | URL, init?: RequestInit) => {
-        const h = new Headers(init?.headers);
-        if (key.startsWith("sb_") && h.get("Authorization") === `Bearer ${key}`) {
-          h.delete("Authorization");
-        }
-        h.set("apikey", key);
-        return fetch(input, { ...init, headers: h });
-      },
-    },
-  });
+  const { publicServerClient } = await import("./db.server");
+  const supabase = publicServerClient();
 
   const [surplusRes, recipeRes, ingRes] = await Promise.all([
     supabase
       .from("seasonal_surplus")
-      .select(
-        "month, veg_key, name_zh, name_en, typical_surplus_kg, severity, note_zh, note_en",
-      )
+      .select("month, veg_key, name_zh, name_en, typical_surplus_kg, severity, note_zh, note_en")
       .order("month")
       .order("typical_surplus_kg", { ascending: false }),
     supabase.from("recipes").select("*").order("code"),
