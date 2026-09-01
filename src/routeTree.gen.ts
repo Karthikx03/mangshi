@@ -20,6 +20,7 @@ import { Route as SystemIndexRouteImport } from './routes/system.index'
 import { Route as SystemImpactRouteImport } from './routes/system.impact'
 import { Route as SystemKitchenRouteImport } from './routes/system.kitchen'
 import { Route as SystemMatchRouteImport } from './routes/system.match'
+import { Route as SystemRecipesRouteImport } from './routes/system.recipes'
 import { Route as SystemSupplyRouteImport } from './routes/system.supply'
 
 const IndexRoute = IndexRouteImport.update({
@@ -77,6 +78,11 @@ const SystemMatchRoute = SystemMatchRouteImport.update({
   path: '/match',
   getParentRoute: () => SystemRoute,
 } as any)
+const SystemRecipesRoute = SystemRecipesRouteImport.update({
+  id: '/recipes',
+  path: '/recipes',
+  getParentRoute: () => SystemRoute,
+} as any)
 const SystemSupplyRoute = SystemSupplyRouteImport.update({
   id: '/supply',
   path: '/supply',
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/system/impact': typeof SystemImpactRoute
   '/system/kitchen': typeof SystemKitchenRoute
   '/system/match': typeof SystemMatchRoute
+  '/system/recipes': typeof SystemRecipesRoute
   '/system/supply': typeof SystemSupplyRoute
   '/system/': typeof SystemIndexRoute
 }
@@ -107,6 +114,7 @@ export interface FileRoutesByTo {
   '/system/impact': typeof SystemImpactRoute
   '/system/kitchen': typeof SystemKitchenRoute
   '/system/match': typeof SystemMatchRoute
+  '/system/recipes': typeof SystemRecipesRoute
   '/system/supply': typeof SystemSupplyRoute
   '/system': typeof SystemIndexRoute
 }
@@ -122,6 +130,7 @@ export interface FileRoutesById {
   '/system/impact': typeof SystemImpactRoute
   '/system/kitchen': typeof SystemKitchenRoute
   '/system/match': typeof SystemMatchRoute
+  '/system/recipes': typeof SystemRecipesRoute
   '/system/supply': typeof SystemSupplyRoute
   '/system/': typeof SystemIndexRoute
 }
@@ -138,6 +147,7 @@ export interface FileRouteTypes {
     | '/system/impact'
     | '/system/kitchen'
     | '/system/match'
+    | '/system/recipes'
     | '/system/supply'
     | '/system/'
   fileRoutesByTo: FileRoutesByTo
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/system/impact'
     | '/system/kitchen'
     | '/system/match'
+    | '/system/recipes'
     | '/system/supply'
     | '/system'
   id:
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/system/impact'
     | '/system/kitchen'
     | '/system/match'
+    | '/system/recipes'
     | '/system/supply'
     | '/system/'
   fileRoutesById: FileRoutesById
@@ -258,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SystemMatchRouteImport
       parentRoute: typeof SystemRoute
     }
+    '/system/recipes': {
+      id: '/system/recipes'
+      path: '/recipes'
+      fullPath: '/system/recipes'
+      preLoaderRoute: typeof SystemRecipesRouteImport
+      parentRoute: typeof SystemRoute
+    }
     '/system/supply': {
       id: '/system/supply'
       path: '/supply'
@@ -272,6 +291,7 @@ interface SystemRouteChildren {
   SystemImpactRoute: typeof SystemImpactRoute
   SystemKitchenRoute: typeof SystemKitchenRoute
   SystemMatchRoute: typeof SystemMatchRoute
+  SystemRecipesRoute: typeof SystemRecipesRoute
   SystemSupplyRoute: typeof SystemSupplyRoute
   SystemIndexRoute: typeof SystemIndexRoute
 }
@@ -280,6 +300,7 @@ const SystemRouteChildren: SystemRouteChildren = {
   SystemImpactRoute: SystemImpactRoute,
   SystemKitchenRoute: SystemKitchenRoute,
   SystemMatchRoute: SystemMatchRoute,
+  SystemRecipesRoute: SystemRecipesRoute,
   SystemSupplyRoute: SystemSupplyRoute,
   SystemIndexRoute: SystemIndexRoute,
 }
