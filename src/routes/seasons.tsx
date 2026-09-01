@@ -3,6 +3,7 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
+import { PageSkeleton } from "@/components/PageSkeleton";
 import { useLang } from "@/lib/i18n";
 import { getSeasonalCalendar } from "@/lib/seasons.functions";
 import { MONTH_LABELS, planMonth } from "@/lib/seasons";
@@ -38,6 +39,15 @@ export const Route = createFileRoute("/seasons")({
       <p className="font-display text-2xl">資料暫時無法載入 · Data unavailable</p>
     </div>
   ),
+  pendingComponent: () => (
+    <div className="min-h-screen bg-background flex flex-col">
+      <SiteNav />
+      <div className="pt-[4.5rem] flex-1">
+        <PageSkeleton tiles={4} />
+      </div>
+    </div>
+  ),
+  pendingMs: 200,
   component: SeasonsPage,
 });
 
