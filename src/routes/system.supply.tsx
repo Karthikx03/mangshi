@@ -51,19 +51,31 @@ function KebabMenu({
   onDelete,
   editLabel,
   deleteLabel,
+  confirmLabel,
+  cancelLabel,
 }: {
   onEdit: () => void;
   onDelete: () => void;
   editLabel: string;
   deleteLabel: string;
+  confirmLabel: string;
+  cancelLabel: string;
 }) {
   const [open, setOpen] = useState(false);
+  // Two-step delete: the first click swaps the menu to an inline "are you sure"
+  // row (in the site's own styling) rather than a native window.confirm() popup,
+  // which reads as jarring/off-brand next to the rest of this screen and is also
+  // easy for a scripted click-through to blow past without noticing it was there.
+  const [confirming, setConfirming] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
     const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+        setConfirming(false);
+      }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -73,7 +85,10 @@ function KebabMenu({
     <div ref={ref} className="relative shrink-0">
       <button
         type="button"
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          setOpen((o) => !o);
+          setConfirming(false);
+        }}
         className="p-1.5 rounded hover:bg-border/60 transition-colors text-clay hover:text-foreground"
         aria-label="Actions"
       >
@@ -84,27 +99,52 @@ function KebabMenu({
         </svg>
       </button>
       {open && (
-        <div className="absolute right-0 top-full mt-1 z-20 min-w-[120px] border border-border bg-background shadow-lg">
-          <button
-            type="button"
-            onClick={() => {
-              setOpen(false);
-              onEdit();
-            }}
-            className="w-full text-left px-4 py-2.5 text-sm hover:bg-border/40 transition-colors"
-          >
-            {editLabel}
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setOpen(false);
-              onDelete();
-            }}
-            className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
-          >
-            {deleteLabel}
-          </button>
+        <div className="absolute right-0 top-full mt-1 z-20 min-w-[160px] border border-border bg-background shadow-lg">
+          {confirming ? (
+            <div className="px-4 py-3">
+              <p className="text-xs text-clay">{deleteLabel}?</p>
+              <div className="mt-2.5 flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOpen(false);
+                    setConfirming(false);
+                    onDelete();
+                  }}
+                  className="flex-1 border border-red-600 text-red-600 px-2 py-1.5 text-xs uppercase tracking-[0.15em] hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
+                >
+                  {confirmLabel}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setConfirming(false)}
+                  className="flex-1 border border-border px-2 py-1.5 text-xs uppercase tracking-[0.15em] hover:bg-border/40 transition-colors"
+                >
+                  {cancelLabel}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  onEdit();
+                }}
+                className="w-full text-left px-4 py-2.5 text-sm hover:bg-border/40 transition-colors"
+              >
+                {editLabel}
+              </button>
+              <button
+                type="button"
+                onClick={() => setConfirming(true)}
+                className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
+              >
+                {deleteLabel}
+              </button>
+            </>
+          )}
         </div>
       )}
     </div>
@@ -191,8 +231,8 @@ function SupplyScreen() {
     setOrderState("saved");
   };
 
+  // Confirmation now happens inline in the KebabMenu before onDelete is ever called.
   const handleDeleteSupply = async (id: string) => {
-    if (!window.confirm(t("sys.supply.confirmDelete"))) return;
     recordSupplyDelete(id);
     try {
       await execDeleteSupply({ data: { id } });
@@ -243,8 +283,8 @@ function SupplyScreen() {
     await refresh();
   };
 
+  // Confirmation now happens inline in the KebabMenu before onDelete is ever called.
   const handleDeletePreorder = async (id: string) => {
-    if (!window.confirm(t("sys.order.confirmDelete"))) return;
     recordPreorderDelete(id);
     try {
       await execDeletePreorder({ data: { id } });
@@ -402,7 +442,7 @@ function SupplyScreen() {
               {orderState === "saving" ? t("sys.supply.saving") : t("sys.order.submit")}
             </button>
             {orderState === "saved" && (
-              <p className="mt-4 text-sm text-sage">{t("sys.supply.saved")}</p>
+              <p className="mt-4 text-sm text-sage">{t("sys.order.saved")}</p>
             )}
           </form>
         </Reveal>
@@ -483,6 +523,8 @@ function SupplyScreen() {
                       <KebabMenu
                         editLabel={t("sys.supply.edit")}
                         deleteLabel={t("sys.supply.delete")}
+                        confirmLabel={t("sys.supply.delete")}
+                        cancelLabel={t("sys.supply.cancel")}
                         onEdit={() => handleEditSupply(s)}
                         onDelete={() => handleDeleteSupply(s.id)}
                       />
@@ -554,6 +596,8 @@ function SupplyScreen() {
                       <KebabMenu
                         editLabel={t("sys.order.edit")}
                         deleteLabel={t("sys.order.delete")}
+                        confirmLabel={t("sys.order.delete")}
+                        cancelLabel={t("sys.supply.cancel")}
                         onEdit={() => handleEditPreorder(p)}
                         onDelete={() => handleDeletePreorder(p.id)}
                       />
