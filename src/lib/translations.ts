@@ -42,8 +42,8 @@ export const translations = {
   "home.hero.title1": { en: "The steam carries a memory", zh: "蒸氣承載著一段記憶" },
   "home.hero.title2": { en: "you haven't lived yet.", zh: "那是你尚未經歷的記憶" },
   "home.hero.sub": {
-    en: "A student-run kitchen rescuing surplus harvest from Taiwanese farms — served as Hakka heritage meals, sealed for surprise.",
-    zh: "由學生經營的廚房,搶救台灣農場的剩食 —— 化為客家家鄉味,封盒成驚喜。",
+    en: "A student-led initiative rescuing surplus harvest from Taiwanese farms — served as Hakka heritage meals, sealed for surprise.",
+    zh: "由學生發起的計畫,搶救台灣農場的剩食 —— 化為客家家鄉味,封盒成驚喜。",
   },
   "home.hero.cta": { en: "Open the box", zh: "打開盲盒" },
 
@@ -416,6 +416,7 @@ export const translations = {
   "sys.order.campus": { en: "Campus", zh: "學校" },
   "sys.order.portions": { en: "Meals", zh: "餐盒數" },
   "sys.order.submit": { en: "Add preorder", zh: "新增預訂" },
+  "sys.order.saved": { en: "Preorder confirmed. Thank you.", zh: "預訂已確認,謝謝您。" },
   "sys.order.list": { en: "Confirmed preorders", zh: "已確認預訂" },
   "sys.order.edit": { en: "Edit", zh: "編輯" },
   "sys.order.delete": { en: "Delete", zh: "刪除" },
