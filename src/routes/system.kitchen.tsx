@@ -1,10 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useLang } from "@/lib/i18n";
 import { Reveal } from "@/components/Reveal";
 import { systemQueryOptions } from "@/lib/systemQuery";
 import { matchMenus } from "@/lib/matching";
+
+// "Done" is tracked per calendar day so yesterday's checkmarks don't linger.
+// It lives in this browser's localStorage — there is no cross-device kitchen
+// plan table yet (see production_plans/plan_items in the schema, currently
+// unused) — so a shared kitchen device keeps state across reloads, but two
+// different devices marking the same batch will not see each other's ticks.
+function todayKey() {
+  return `mangshi_kitchen_done_${new Date().toISOString().slice(0, 10)}`;
+}
+
+function loadDone(): Record<string, boolean> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = localStorage.getItem(todayKey());
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
 
 export const Route = createFileRoute("/system/kitchen")({
   head: () => ({
@@ -31,6 +50,12 @@ function KitchenScreen() {
   const { t, lang } = useLang();
   const { data } = useQuery(systemQueryOptions);
   const [done, setDone] = useState<Record<string, boolean>>({});
+
+  // Load once on mount (client-only — matches nothing on the server, so this
+  // runs after hydration rather than during SSR).
+  useEffect(() => {
+    setDone(loadDone());
+  }, []);
 
   const plan = useMemo(
     () => (data ? matchMenus(data.supply, data.preorders, data.recipes) : null),
@@ -79,7 +104,17 @@ function KitchenScreen() {
                     </p>
                   )}
                   <button
-                    onClick={() => setDone((d) => ({ ...d, [item.recipe.id]: !d[item.recipe.id] }))}
+                    onClick={() =>
+                      setDone((d) => {
+                        const next = { ...d, [item.recipe.id]: !d[item.recipe.id] };
+                        try {
+                          localStorage.setItem(todayKey(), JSON.stringify(next));
+                        } catch {
+                          // best-effort only
+                        }
+                        return next;
+                      })
+                    }
                     className={`mt-6 border px-5 py-2.5 text-[10px] uppercase tracking-[0.22em] transition-colors ${
                       isDone
                         ? "border-sage text-sage"
