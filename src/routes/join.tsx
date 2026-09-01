@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { useLang } from "@/lib/i18n";
+import { submitJoinRequest } from "@/lib/join.functions";
 
 export const Route = createFileRoute("/join")({
   head: () => ({
@@ -27,11 +29,25 @@ export const Route = createFileRoute("/join")({
 
 function Join() {
   const { t } = useLang();
+  const submit = useServerFn(submitJoinRequest);
   const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "saving" | "error">("idle");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("student");
+  const [note, setNote] = useState("");
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("saving");
+    try {
+      await submit({ data: { name, email, role, note } });
+      setSubmitted(true);
+      setStatus("idle");
+    } catch (err) {
+      console.error("Failed to submit join request", err);
+      setStatus("error");
+    }
   }
 
   return (
@@ -47,9 +63,7 @@ function Join() {
             {t("join.title1")} <br />
             <span className="italic">{t("join.title2")}</span>
           </h1>
-          <p className="mt-8 max-w-xl text-clay leading-relaxed text-lg">
-            {t("join.body")}
-          </p>
+          <p className="mt-8 max-w-xl text-clay leading-relaxed text-lg">{t("join.body")}</p>
 
           {/* FORM */}
           <div className="mt-14 border-t border-foreground/10 pt-10">
@@ -72,6 +86,8 @@ function Join() {
                     <input
                       required
                       type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       className="mt-2 w-full bg-transparent border-b border-foreground/30 focus:border-indigo-dye outline-none py-3 text-lg font-display"
                       placeholder={t("join.field.name.ph")}
                     />
@@ -83,6 +99,8 @@ function Join() {
                     <input
                       required
                       type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       className="mt-2 w-full bg-transparent border-b border-foreground/30 focus:border-indigo-dye outline-none py-3 text-lg font-display"
                       placeholder={t("join.field.email.ph")}
                     />
@@ -95,7 +113,8 @@ function Join() {
                   </span>
                   <select
                     className="mt-2 w-full bg-transparent border-b border-foreground/30 focus:border-indigo-dye outline-none py-3 text-lg font-display appearance-none"
-                    defaultValue="student"
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
                   >
                     <option value="student">{t("join.role.student")}</option>
                     <option value="intl">{t("join.role.intl")}</option>
@@ -111,6 +130,8 @@ function Join() {
                   </span>
                   <textarea
                     rows={3}
+                    value={note}
+                    onChange={(e) => setNote(e.target.value)}
                     className="mt-2 w-full bg-transparent border-b border-foreground/30 focus:border-indigo-dye outline-none py-3 text-base resize-none"
                     placeholder={t("join.field.note.ph")}
                   />
@@ -118,11 +139,13 @@ function Join() {
 
                 <button
                   type="submit"
-                  className="mt-6 self-start group inline-flex items-center gap-4 bg-indigo-dye text-paper px-8 py-4 font-mono text-[11px] uppercase tracking-[0.25em] hover:opacity-90 transition-opacity"
+                  disabled={status === "saving"}
+                  className="mt-6 self-start group inline-flex items-center gap-4 bg-indigo-dye text-paper px-8 py-4 font-mono text-[11px] uppercase tracking-[0.25em] hover:opacity-90 transition-opacity disabled:opacity-50"
                 >
-                  <span>{t("join.submit")}</span>
+                  <span>{status === "saving" ? t("sys.supply.saving") : t("join.submit")}</span>
                   <span className="block w-6 h-px bg-paper transition-all duration-500 group-hover:w-10" />
                 </button>
+                {status === "error" && <p className="text-sm text-red-600">{t("join.error")}</p>}
               </form>
             )}
           </div>
