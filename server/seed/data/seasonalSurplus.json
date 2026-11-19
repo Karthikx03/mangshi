@@ -1,0 +1,362 @@
+[
+  {
+    "month": 1,
+    "veg_key": "cabbage",
+    "name_zh": "高麗菜",
+    "name_en": "Cabbage",
+    "typical_surplus_kg": 4200,
+    "severity": "high",
+    "note_zh": "冬季高麗菜崩盤期",
+    "note_en": "Winter cabbage price collapse"
+  },
+  {
+    "month": 1,
+    "veg_key": "broccoli",
+    "name_zh": "青花菜",
+    "name_en": "Broccoli",
+    "typical_surplus_kg": 3100,
+    "severity": "high",
+    "note_zh": "一顆十元的季節",
+    "note_en": "The NT$10 head season"
+  },
+  {
+    "month": 1,
+    "veg_key": "daikon",
+    "name_zh": "白蘿蔔",
+    "name_en": "Daikon",
+    "typical_surplus_kg": 2600,
+    "severity": "medium",
+    "note_zh": "產地價低",
+    "note_en": "Farm-gate price bottoms out"
+  },
+  {
+    "month": 2,
+    "veg_key": "cabbage",
+    "name_zh": "高麗菜",
+    "name_en": "Cabbage",
+    "typical_surplus_kg": 3800,
+    "severity": "high",
+    "note_zh": "年後需求驟降",
+    "note_en": "Demand drops after New Year"
+  },
+  {
+    "month": 2,
+    "veg_key": "cauliflower",
+    "name_zh": "白花椰菜",
+    "name_en": "Cauliflower",
+    "typical_surplus_kg": 2400,
+    "severity": "medium",
+    "note_zh": "採收高峰",
+    "note_en": "Harvest peak"
+  },
+  {
+    "month": 2,
+    "veg_key": "mustard_greens",
+    "name_zh": "芥菜",
+    "name_en": "Mustard Greens",
+    "typical_surplus_kg": 2100,
+    "severity": "medium",
+    "note_zh": "客家醃漬旺季",
+    "note_en": "Hakka pickling season"
+  },
+  {
+    "month": 3,
+    "veg_key": "bamboo",
+    "name_zh": "竹筍",
+    "name_en": "Bamboo Shoots",
+    "typical_surplus_kg": 1800,
+    "severity": "medium",
+    "note_zh": "春筍出土",
+    "note_en": "Spring shoots emerge"
+  },
+  {
+    "month": 3,
+    "veg_key": "cabbage",
+    "name_zh": "高麗菜",
+    "name_en": "Cabbage",
+    "typical_surplus_kg": 2200,
+    "severity": "medium",
+    "note_zh": "春作尾聲",
+    "note_en": "Tail of the spring crop"
+  },
+  {
+    "month": 3,
+    "veg_key": "carrot",
+    "name_zh": "紅蘿蔔",
+    "name_en": "Carrot",
+    "typical_surplus_kg": 1600,
+    "severity": "low",
+    "note_zh": "外觀不良品多",
+    "note_en": "Many cosmetically rejected roots"
+  },
+  {
+    "month": 4,
+    "veg_key": "bamboo",
+    "name_zh": "竹筍",
+    "name_en": "Bamboo Shoots",
+    "typical_surplus_kg": 2100,
+    "severity": "medium",
+    "note_zh": "盛產期",
+    "note_en": "Peak season"
+  },
+  {
+    "month": 4,
+    "veg_key": "onion",
+    "name_zh": "洋蔥",
+    "name_en": "Onion",
+    "typical_surplus_kg": 2600,
+    "severity": "high",
+    "note_zh": "恆春洋蔥採收",
+    "note_en": "Hengchun onion harvest"
+  },
+  {
+    "month": 4,
+    "veg_key": "cucumber",
+    "name_zh": "小黃瓜",
+    "name_en": "Cucumber",
+    "typical_surplus_kg": 1500,
+    "severity": "low",
+    "note_zh": "溫室過量",
+    "note_en": "Greenhouse overflow"
+  },
+  {
+    "month": 5,
+    "veg_key": "tomato",
+    "name_zh": "番茄",
+    "name_en": "Tomato",
+    "typical_surplus_kg": 2400,
+    "severity": "medium",
+    "note_zh": "梅雨前搶收",
+    "note_en": "Rushed pre-monsoon harvest"
+  },
+  {
+    "month": 5,
+    "veg_key": "cucumber",
+    "name_zh": "小黃瓜",
+    "name_en": "Cucumber",
+    "typical_surplus_kg": 1900,
+    "severity": "medium",
+    "note_zh": "價格走低",
+    "note_en": "Prices sag"
+  },
+  {
+    "month": 5,
+    "veg_key": "bitter_melon",
+    "name_zh": "苦瓜",
+    "name_en": "Bitter Melon",
+    "typical_surplus_kg": 1400,
+    "severity": "low",
+    "note_zh": "初夏上市",
+    "note_en": "Early summer arrival"
+  },
+  {
+    "month": 6,
+    "veg_key": "bitter_melon",
+    "name_zh": "苦瓜",
+    "name_en": "Bitter Melon",
+    "typical_surplus_kg": 2000,
+    "severity": "medium",
+    "note_zh": "盛夏產量高",
+    "note_en": "High summer yield"
+  },
+  {
+    "month": 6,
+    "veg_key": "pumpkin",
+    "name_zh": "南瓜",
+    "name_en": "Pumpkin",
+    "typical_surplus_kg": 2200,
+    "severity": "medium",
+    "note_zh": "南部大出",
+    "note_en": "Southern glut"
+  },
+  {
+    "month": 6,
+    "veg_key": "corn",
+    "name_zh": "玉米",
+    "name_en": "Corn",
+    "typical_surplus_kg": 1800,
+    "severity": "low",
+    "note_zh": "夏收集中",
+    "note_en": "Concentrated harvest"
+  },
+  {
+    "month": 7,
+    "veg_key": "pumpkin",
+    "name_zh": "南瓜",
+    "name_en": "Pumpkin",
+    "typical_surplus_kg": 2600,
+    "severity": "high",
+    "note_zh": "儲運壓力大",
+    "note_en": "Storage and transport pressure"
+  },
+  {
+    "month": 7,
+    "veg_key": "sweet_potato_leaf",
+    "name_zh": "地瓜葉",
+    "name_en": "Sweet Potato Leaves",
+    "typical_surplus_kg": 1700,
+    "severity": "medium",
+    "note_zh": "生長極快",
+    "note_en": "Grows faster than demand"
+  },
+  {
+    "month": 7,
+    "veg_key": "corn",
+    "name_zh": "玉米",
+    "name_en": "Corn",
+    "typical_surplus_kg": 2000,
+    "severity": "medium",
+    "note_zh": "價格低迷",
+    "note_en": "Weak prices"
+  },
+  {
+    "month": 8,
+    "veg_key": "sweet_potato_leaf",
+    "name_zh": "地瓜葉",
+    "name_en": "Sweet Potato Leaves",
+    "typical_surplus_kg": 2100,
+    "severity": "medium",
+    "note_zh": "颱風前搶收",
+    "note_en": "Pre-typhoon harvest"
+  },
+  {
+    "month": 8,
+    "veg_key": "eggplant",
+    "name_zh": "茄子",
+    "name_en": "Eggplant",
+    "typical_surplus_kg": 1900,
+    "severity": "medium",
+    "note_zh": "外觀不良率高",
+    "note_en": "High cosmetic rejection"
+  },
+  {
+    "month": 8,
+    "veg_key": "tomato",
+    "name_zh": "番茄",
+    "name_en": "Tomato",
+    "typical_surplus_kg": 1500,
+    "severity": "low",
+    "note_zh": "小果偏多",
+    "note_en": "Too many small fruits"
+  },
+  {
+    "month": 9,
+    "veg_key": "eggplant",
+    "name_zh": "茄子",
+    "name_en": "Eggplant",
+    "typical_surplus_kg": 2200,
+    "severity": "medium",
+    "note_zh": "秋作大出",
+    "note_en": "Autumn crop surge"
+  },
+  {
+    "month": 9,
+    "veg_key": "tomato",
+    "name_zh": "番茄",
+    "name_en": "Tomato",
+    "typical_surplus_kg": 1800,
+    "severity": "medium",
+    "note_zh": "轉作期過剩",
+    "note_en": "Rotation-period surplus"
+  },
+  {
+    "month": 9,
+    "veg_key": "cabbage",
+    "name_zh": "高麗菜",
+    "name_en": "Cabbage",
+    "typical_surplus_kg": 1600,
+    "severity": "low",
+    "note_zh": "高冷地供應",
+    "note_en": "Highland supply"
+  },
+  {
+    "month": 10,
+    "veg_key": "daikon",
+    "name_zh": "白蘿蔔",
+    "name_en": "Daikon",
+    "typical_surplus_kg": 2400,
+    "severity": "medium",
+    "note_zh": "秋蘿蔔上市",
+    "note_en": "Autumn daikon arrives"
+  },
+  {
+    "month": 10,
+    "veg_key": "cabbage",
+    "name_zh": "高麗菜",
+    "name_en": "Cabbage",
+    "typical_surplus_kg": 2600,
+    "severity": "medium",
+    "note_zh": "平地種植開始",
+    "note_en": "Lowland planting begins"
+  },
+  {
+    "month": 10,
+    "veg_key": "carrot",
+    "name_zh": "紅蘿蔔",
+    "name_en": "Carrot",
+    "typical_surplus_kg": 1800,
+    "severity": "low",
+    "note_zh": "雲林產區",
+    "note_en": "Yunlin production belt"
+  },
+  {
+    "month": 11,
+    "veg_key": "cabbage",
+    "name_zh": "高麗菜",
+    "name_en": "Cabbage",
+    "typical_surplus_kg": 3400,
+    "severity": "high",
+    "note_zh": "超種警戒",
+    "note_en": "Over-planting alert"
+  },
+  {
+    "month": 11,
+    "veg_key": "broccoli",
+    "name_zh": "青花菜",
+    "name_en": "Broccoli",
+    "typical_surplus_kg": 2700,
+    "severity": "high",
+    "note_zh": "花椰菜同時採收",
+    "note_en": "Simultaneous broccoli harvest"
+  },
+  {
+    "month": 11,
+    "veg_key": "daikon",
+    "name_zh": "白蘿蔔",
+    "name_en": "Daikon",
+    "typical_surplus_kg": 2500,
+    "severity": "medium",
+    "note_zh": "醃蘿蔔季",
+    "note_en": "Pickled radish season"
+  },
+  {
+    "month": 12,
+    "veg_key": "broccoli",
+    "name_zh": "青花菜",
+    "name_en": "Broccoli",
+    "typical_surplus_kg": 3600,
+    "severity": "high",
+    "note_zh": "年度過剩高峰",
+    "note_en": "Annual surplus peak"
+  },
+  {
+    "month": 12,
+    "veg_key": "cabbage",
+    "name_zh": "高麗菜",
+    "name_en": "Cabbage",
+    "typical_surplus_kg": 4000,
+    "severity": "high",
+    "note_zh": "價格崩跌",
+    "note_en": "Prices collapse"
+  },
+  {
+    "month": 12,
+    "veg_key": "cauliflower",
+    "name_zh": "白花椰菜",
+    "name_en": "Cauliflower",
+    "typical_surplus_kg": 2300,
+    "severity": "medium",
+    "note_zh": "同期競爭",
+    "note_en": "Competing with broccoli"
+  }
+]

@@ -1,78 +1,137 @@
-# Mangshi 盲食
+# Mangshi 盲食 — MERN Stack
 
 **A student-led initiative rescuing surplus harvest from Taiwanese farms — served as sealed, blind Hakka heritage meals.**
 
-Mangshi (盲食, "blind eating") pairs a Chinese-first, image-led marketing site with a small operational system: farmers log surplus produce, campuses log meal preorders, and a deterministic matching engine turns that supply/demand snapshot into a kitchen production plan — no invented recipes, nothing labeled AI, everything backed by a real Supabase database.
+Mangshi (盲食, "blind eating") is a Chinese-first, image-led site with a small operational system: farmers log surplus produce, campuses log meal preorders, and a deterministic matching engine turns that supply/demand snapshot into a kitchen production plan.
+
+This version is built on the **MERN stack**: **M**ongoDB, **E**xpress, **R**eact, **N**ode.js.
 
 ![Homepage](docs/screenshots/home.png)
 
-## What's here
+## Tech stack
 
-**Public site** (Chinese-first, English toggle, image-led):
-- `/` — Home
-- `/culture` — Hakka food culture and preservation traditions
-- `/box` — The blind-box interaction (flip a sealed card to reveal what's inside)
-- `/mission` — The rescue-and-serve mission, in numbers
-- `/seasons` — A month-by-month Taiwan surplus calendar mapped to recipes
-- `/join` — Sign up as a student, farm, school, or volunteer
+| Layer    | Technology                                                        |
+| -------- | ----------------------------------------------------------------- |
+| Database | **MongoDB** with **Mongoose** schemas and validation              |
+| Backend  | **Node.js** + **Express** REST API (`server/`)                    |
+| Frontend | **React 19** + Vite + React Router + TanStack Query + Tailwind CSS (`client/`) |
 
-**Operational system** at `/system` (the part that makes this more than a landing page):
-- `/system/supply` — farmers log surplus batches; campuses log preorders
-- `/system/match` — a deterministic allocator scales the recipe library to available supply and confirmed orders (max utilization, subject to stock and kitchen-capacity limits)
-- `/system/kitchen` — the resulting production plan, with per-batch done/not-done tracking
-- `/system/impact` — kg rescued, meals served, utilization, and other running totals
-- `/system/recipes` — the read-only validated recipe library the matcher draws from
+## Project structure
+
+```
+mangshi/
+├── package.json            # root scripts: run client + server together
+├── server/                 # Express + MongoDB API
+│   ├── src/
+│   │   ├── index.js        # entry point: connects to MongoDB, starts Express
+│   │   ├── app.js          # Express app: middleware, routes, serves client/dist in production
+│   │   ├── db.js           # Mongoose connection + JSON serialization (_id -> id)
+│   │   ├── models/         # Recipe, FarmSupply, Preorder, SeasonalSurplus, JoinRequest
+│   │   ├── routes/         # system, supply, preorders, recipes, seasons, join
+│   │   └── middleware/     # error handling, admin key guard
+│   └── seed/
+│       ├── seed.js         # loads seed data into MongoDB
+│       └── data/*.json     # recipes, seasonal calendar, demo supply + preorders
+└── client/                 # React frontend (Vite)
+    └── src/
+        ├── main.tsx        # React root: Router, QueryClient, language provider
+        ├── App.tsx         # route table
+        ├── pages/          # one component per page
+        ├── components/     # nav, footer, reveal animations, skeletons, error boundary
+        └── lib/            # api.ts (fetch client), matching engine, i18n, translations
+```
+
+## Pages
+
+**Public site** (Chinese-first, English toggle):
+`/` Home · `/culture` Hakka food culture · `/box` the blind-box interaction · `/mission` the mission in numbers · `/seasons` month-by-month surplus calendar · `/join` sign-up form
+
+**Operational system** at `/system`:
+- `/system/supply` — farmers log surplus batches; campuses log preorders (full create / edit / delete)
+- `/system/match` — scales the recipe library to available supply and confirmed orders
+- `/system/kitchen` — the resulting production plan, with per-batch done tracking
+- `/system/impact` — kg rescued, meals served, utilization and other totals
+- `/system/recipes` — the read-only recipe library
+
+## REST API
+
+All endpoints are under `/api` and return JSON. Documents use a string `id`.
+
+| Method | Endpoint               | Description                                              |
+| ------ | ---------------------- | -------------------------------------------------------- |
+| GET    | `/api/health`          | Server and database status                               |
+| GET    | `/api/system`          | Supply, preorders and recipes in one snapshot            |
+| GET    | `/api/supply`          | List surplus batches (newest 60)                         |
+| POST   | `/api/supply`          | Log a batch `{ farmer_name, veg_key, name_zh, name_en, kg, available_from, available_to }` |
+| PATCH  | `/api/supply/:id`      | Update a batch                                           |
+| DELETE | `/api/supply/:id`      | Delete a batch                                           |
+| GET    | `/api/preorders`       | List campus preorders                                    |
+| POST   | `/api/preorders`       | Add a preorder `{ campus, portions }`                    |
+| PATCH  | `/api/preorders/:id`   | Update a preorder                                        |
+| DELETE | `/api/preorders/:id`   | Delete a preorder                                        |
+| GET    | `/api/recipes`         | Recipe library (with embedded ingredients)               |
+| GET    | `/api/recipes/:code`   | One recipe by code                                       |
+| GET    | `/api/seasons`         | Seasonal surplus calendar + recipes                      |
+| POST   | `/api/join`            | Submit the join form `{ name, email, role, note }`       |
+| GET    | `/api/join`            | List join requests — **admin only**, send header `x-admin-key: <ADMIN_KEY>` |
+
+Validation runs in the Mongoose schemas: invalid input returns `400 { "error": "..." }`, unknown ids return `404`.
+
+## Getting started
+
+**Requirements:** Node.js 20+ and MongoDB (a local install, or a free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster).
+
+1. Install dependencies for the root, server and client:
+   ```bash
+   npm run install:all
+   ```
+2. Create the server's environment file and set `MONGODB_URI` (the default points at a local MongoDB):
+   ```bash
+   cp server/.env.example server/.env
+   ```
+3. Load the recipe library, seasonal calendar and demo data into MongoDB:
+   ```bash
+   npm run seed
+   ```
+   (`npm run seed -- --keep` reloads only recipes and the calendar, keeping your supply and preorders.)
+4. Start the API and the React dev server together:
+   ```bash
+   npm run dev
+   ```
+   Open http://localhost:5173. The API runs on http://localhost:5050, and Vite proxies `/api` requests to it.
+
+> The API uses port **5050**, not 5000: on macOS, port 5000 is taken by the AirPlay Receiver.
+
+### Environment variables (`server/.env`)
+
+| Variable        | Default                               | Purpose                                   |
+| --------------- | ------------------------------------- | ----------------------------------------- |
+| `MONGODB_URI`   | `mongodb://127.0.0.1:27017/mangshi`   | MongoDB connection string                 |
+| `API_PORT`      | `5050` (falls back to `PORT`)         | Port the Express server listens on        |
+| `CLIENT_ORIGIN` | `http://localhost:5173`               | Allowed CORS origin(s), comma-separated   |
+| `ADMIN_KEY`     | `change-me`                           | Secret for `GET /api/join`                |
+
+## Production build
+
+```bash
+npm run build   # builds the React app into client/dist
+npm start       # Express serves the API and the built React app on one port
+```
+
+To deploy to a single Node host (e.g. Render or Railway): set the build command to `npm run install:all && npm run build`, the start command to `npm start`, and set `MONGODB_URI` (an Atlas connection string) and `ADMIN_KEY` in the host's environment settings.
 
 | | | |
 |---|---|---|
 | ![Culture](docs/screenshots/culture.png) | ![The blind box](docs/screenshots/box.png) | ![Mission](docs/screenshots/mission.png) |
 
-## Stack
+## History
 
-- **Frontend**: React 19 + TanStack Start / Router, Vite, Tailwind CSS
-- **Backend**: Supabase (Postgres + RLS), via `@supabase/supabase-js`
-- **Deploy target**: Cloudflare Workers, via Wrangler + `@cloudflare/vite-plugin`
-- **Data**: TanStack Query, with server-side rendering and SSR query hydration (`@tanstack/react-router-ssr-query`)
+This project began as a TanStack Start + Supabase app deployed to Cloudflare Workers ([original](https://github.com/chiragjindal123/mangshi)). It was rebuilt on the MERN stack:
 
-## Getting started
+- Supabase (Postgres) → **MongoDB** with Mongoose models. Recipe ingredients are embedded in each recipe document instead of living in a separate table.
+- TanStack Start server functions → an **Express REST API**.
+- TanStack Router (SSR) → a **React** single-page app using React Router, with TanStack Query for data fetching.
+- Edits and deletes on `/system/supply` now persist to the database. The old version kept them in browser localStorage when the database rejected them.
+- The seed data was exported from the original database, so the recipes, seasonal calendar and demo snapshot match.
 
-```bash
-npm install
-npm run dev
-```
-
-`.env` is checked in with this project's Supabase URL and *publishable* (anon) key — that's intentional, it's the public key meant to be client-visible, and Row Level Security is what actually protects the data. `npm run dev` works against that project out of the box. To point this at your own Supabase project instead, replace `SUPABASE_URL` / `SUPABASE_PUBLISHABLE_KEY` in both `.env` (covers local `vite dev`) and `wrangler.jsonc`'s `vars` block (covers the deployed Cloudflare Worker — the two are read independently, so both need updating) — and see **Database** below for the schema you'll need to recreate.
-
-```bash
-npm run build        # production build
-npm run lint          # eslint
-npx tsc --noEmit      # typecheck
-npm run dev -- --host # local dev server
-```
-
-To deploy:
-
-```bash
-npm run build
-npx wrangler deploy
-```
-
-## Database
-
-Two migrations are checked in under `supabase/migrations/`:
-
-- the nutrition-columns migration for `recipes` (protein/carbs/fat/fiber)
-- `20260901031442_add_join_requests.sql` — creates the `join_requests` table (public INSERT via RLS, no public SELECT — submissions are read from the Supabase dashboard, which uses the service role)
-
-The rest of the schema (`farm_supply`, `preorders`, `recipes`, `recipe_ingredients`, `seasonal_surplus`, plus two currently-unused tables — `production_plans` / `plan_items`, scaffolded for a future shared kitchen-plan feature) was provisioned directly against the Supabase project rather than captured as local migrations. **If you're standing this project up against a fresh Supabase project, you'll need to recreate that schema** — the full shape of every table (columns, types, nullability) is documented in `src/integrations/supabase/types.ts`, which is the source of truth to rebuild from.
-
-**Run `20260901031442_add_join_requests.sql` against your Supabase project before the `/join` form will work** — either `supabase db push`, or paste the file into the SQL editor in the Supabase dashboard.
-
-## Notes on this snapshot
-
-This repo is a deployable snapshot of the [original project](https://github.com/chiragjindal123/mangshi) (built with [Lovable](https://lovable.dev)) after a debugging/audit pass: real TypeScript errors, a `/join` form that wasn't actually submitting anywhere, a missing Cloudflare Worker runtime config, a React hydration mismatch caused by the client and server query caches never being connected, and a handful of smaller UX fixes (wrong success-message copy, an inline delete confirmation, a consistent self-description across the site, loading states for data-fetched pages). See the commit history for the specifics.
-
-Known open items:
-- `/join` needs the `join_requests` migration applied to whichever Supabase project this is pointed at (see above).
-- Contact emails on `/join` and the footer's award/partnership copy are placeholder content, not verified real details — update before treating this as production-ready.
-- `production_plans` / `plan_items` exist in the schema but nothing in the app writes to them yet.
+Known open items: the contact emails on `/join` and the footer's award and partnership copy are placeholder content. `/system` writes are not protected by a login.

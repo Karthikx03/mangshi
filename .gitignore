@@ -31,3 +31,7 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Environment files (copy server/.env.example to server/.env)
+.env
+!.env.example
