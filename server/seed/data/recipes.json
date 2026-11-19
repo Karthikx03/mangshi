@@ -1,0 +1,429 @@
+[
+  {
+    "code": "bamboo_braise",
+    "name_zh": "筍絲滷",
+    "name_en": "Braised Bamboo Shoots",
+    "prep_min": 30,
+    "cook_min": 40,
+    "cost_ntd": 29,
+    "kcal": 540,
+    "vegetarian": false,
+    "allergens": [
+      "soy"
+    ],
+    "max_batch": 200,
+    "note_zh": "春筍時節",
+    "note_en": "Spring bamboo season",
+    "protein_g": 20,
+    "carbs_g": 66,
+    "fat_g": 18,
+    "fiber_g": 9,
+    "ingredients": [
+      {
+        "veg_key": "carrot",
+        "name_zh": "紅蘿蔔",
+        "name_en": "Carrot",
+        "kg_per_100": 2,
+        "is_core": false
+      },
+      {
+        "veg_key": "bamboo",
+        "name_zh": "竹筍",
+        "name_en": "Bamboo Shoots",
+        "kg_per_100": 15,
+        "is_core": true
+      }
+    ]
+  },
+  {
+    "code": "bitter_melon",
+    "name_zh": "苦瓜封",
+    "name_en": "Stuffed Bitter Melon",
+    "prep_min": 40,
+    "cook_min": 35,
+    "cost_ntd": 34,
+    "kcal": 470,
+    "vegetarian": false,
+    "allergens": [
+      "soy"
+    ],
+    "max_batch": 150,
+    "note_zh": "夏日退火",
+    "note_en": "Cools the summer",
+    "protein_g": 21,
+    "carbs_g": 52,
+    "fat_g": 16,
+    "fiber_g": 7,
+    "ingredients": [
+      {
+        "veg_key": "carrot",
+        "name_zh": "紅蘿蔔",
+        "name_en": "Carrot",
+        "kg_per_100": 2,
+        "is_core": false
+      },
+      {
+        "veg_key": "bitter_melon",
+        "name_zh": "苦瓜",
+        "name_en": "Bitter Melon",
+        "kg_per_100": 16,
+        "is_core": true
+      }
+    ]
+  },
+  {
+    "code": "braised_eggplant",
+    "name_zh": "滷茄子",
+    "name_en": "Braised Eggplant",
+    "prep_min": 20,
+    "cook_min": 30,
+    "cost_ntd": 28,
+    "kcal": 430,
+    "vegetarian": true,
+    "allergens": [
+      "soy"
+    ],
+    "max_batch": 200,
+    "note_zh": "軟嫩入味",
+    "note_en": "Slow, soft, savoury",
+    "protein_g": 11,
+    "carbs_g": 60,
+    "fat_g": 13,
+    "fiber_g": 7,
+    "ingredients": [
+      {
+        "veg_key": "tomato",
+        "name_zh": "番茄",
+        "name_en": "Tomato",
+        "kg_per_100": 3,
+        "is_core": false
+      },
+      {
+        "veg_key": "eggplant",
+        "name_zh": "茄子",
+        "name_en": "Eggplant",
+        "kg_per_100": 18,
+        "is_core": true
+      }
+    ]
+  },
+  {
+    "code": "cabbage_carrot",
+    "name_zh": "高麗菜炒紅蘿蔔",
+    "name_en": "Cabbage & Carrot Stir-Fry",
+    "prep_min": 18,
+    "cook_min": 12,
+    "cost_ntd": 22,
+    "kcal": 390,
+    "vegetarian": true,
+    "allergens": [],
+    "max_batch": 300,
+    "note_zh": "高麗菜盛產期主力",
+    "note_en": "Backbone of cabbage glut season",
+    "protein_g": 9,
+    "carbs_g": 58,
+    "fat_g": 11,
+    "fiber_g": 6,
+    "ingredients": [
+      {
+        "veg_key": "carrot",
+        "name_zh": "紅蘿蔔",
+        "name_en": "Carrot",
+        "kg_per_100": 5,
+        "is_core": false
+      },
+      {
+        "veg_key": "cabbage",
+        "name_zh": "高麗菜",
+        "name_en": "Cabbage",
+        "kg_per_100": 20,
+        "is_core": true
+      }
+    ]
+  },
+  {
+    "code": "daikon_soup",
+    "name_zh": "白蘿蔔燉湯",
+    "name_en": "Daikon Soup",
+    "prep_min": 20,
+    "cook_min": 45,
+    "cost_ntd": 24,
+    "kcal": 300,
+    "vegetarian": false,
+    "allergens": [],
+    "max_batch": 300,
+    "note_zh": "冬季暖身",
+    "note_en": "Winter warmth",
+    "protein_g": 12,
+    "carbs_g": 42,
+    "fat_g": 6,
+    "fiber_g": 6,
+    "ingredients": [
+      {
+        "veg_key": "carrot",
+        "name_zh": "紅蘿蔔",
+        "name_en": "Carrot",
+        "kg_per_100": 4,
+        "is_core": false
+      },
+      {
+        "veg_key": "daikon",
+        "name_zh": "白蘿蔔",
+        "name_en": "Daikon",
+        "kg_per_100": 22,
+        "is_core": true
+      }
+    ]
+  },
+  {
+    "code": "garlic_broccoli",
+    "name_zh": "蒜炒青花菜",
+    "name_en": "Garlic Broccoli",
+    "prep_min": 15,
+    "cook_min": 10,
+    "cost_ntd": 30,
+    "kcal": 360,
+    "vegetarian": true,
+    "allergens": [],
+    "max_batch": 250,
+    "note_zh": "解決冬季花椰菜過剩",
+    "note_en": "Answers the winter broccoli glut",
+    "protein_g": 13,
+    "carbs_g": 48,
+    "fat_g": 10,
+    "fiber_g": 8,
+    "ingredients": [
+      {
+        "veg_key": "broccoli",
+        "name_zh": "青花菜",
+        "name_en": "Broccoli",
+        "kg_per_100": 20,
+        "is_core": true
+      }
+    ]
+  },
+  {
+    "code": "hakka_stirfry",
+    "name_zh": "客家小炒",
+    "name_en": "Hakka Stir-Fry",
+    "prep_min": 35,
+    "cook_min": 25,
+    "cost_ntd": 32,
+    "kcal": 610,
+    "vegetarian": false,
+    "allergens": [
+      "soy"
+    ],
+    "max_batch": 250,
+    "note_zh": "客家經典,鹹香下飯",
+    "note_en": "The classic Hakka plate",
+    "protein_g": 26,
+    "carbs_g": 62,
+    "fat_g": 24,
+    "fiber_g": 5,
+    "ingredients": [
+      {
+        "veg_key": "onion",
+        "name_zh": "洋蔥",
+        "name_en": "Onion",
+        "kg_per_100": 4,
+        "is_core": false
+      },
+      {
+        "veg_key": "carrot",
+        "name_zh": "紅蘿蔔",
+        "name_en": "Carrot",
+        "kg_per_100": 3,
+        "is_core": false
+      },
+      {
+        "veg_key": "cabbage",
+        "name_zh": "高麗菜",
+        "name_en": "Cabbage",
+        "kg_per_100": 12,
+        "is_core": true
+      }
+    ]
+  },
+  {
+    "code": "pickled_mustard",
+    "name_zh": "客家鹹菜滷",
+    "name_en": "Pickled Mustard Braise",
+    "prep_min": 30,
+    "cook_min": 40,
+    "cost_ntd": 30,
+    "kcal": 520,
+    "vegetarian": false,
+    "allergens": [
+      "soy"
+    ],
+    "max_batch": 200,
+    "note_zh": "阿嬤的醃漬智慧",
+    "note_en": "Grandmother preservation wisdom",
+    "protein_g": 24,
+    "carbs_g": 58,
+    "fat_g": 20,
+    "fiber_g": 5,
+    "ingredients": [
+      {
+        "veg_key": "daikon",
+        "name_zh": "白蘿蔔",
+        "name_en": "Daikon",
+        "kg_per_100": 5,
+        "is_core": false
+      },
+      {
+        "veg_key": "mustard_greens",
+        "name_zh": "芥菜",
+        "name_en": "Mustard Greens",
+        "kg_per_100": 15,
+        "is_core": true
+      }
+    ]
+  },
+  {
+    "code": "pumpkin_rice",
+    "name_zh": "南瓜飯",
+    "name_en": "Pumpkin Rice",
+    "prep_min": 25,
+    "cook_min": 30,
+    "cost_ntd": 27,
+    "kcal": 560,
+    "vegetarian": true,
+    "allergens": [],
+    "max_batch": 250,
+    "note_zh": "夏末南瓜盛產",
+    "note_en": "Late-summer pumpkin",
+    "protein_g": 12,
+    "carbs_g": 88,
+    "fat_g": 12,
+    "fiber_g": 7,
+    "ingredients": [
+      {
+        "veg_key": "onion",
+        "name_zh": "洋蔥",
+        "name_en": "Onion",
+        "kg_per_100": 2,
+        "is_core": false
+      },
+      {
+        "veg_key": "pumpkin",
+        "name_zh": "南瓜",
+        "name_en": "Pumpkin",
+        "kg_per_100": 16,
+        "is_core": true
+      }
+    ]
+  },
+  {
+    "code": "seasonal_bowl",
+    "name_zh": "時蔬飯",
+    "name_en": "Seasonal Veg Bowl",
+    "prep_min": 20,
+    "cook_min": 20,
+    "cost_ntd": 25,
+    "kcal": 500,
+    "vegetarian": true,
+    "allergens": [],
+    "max_batch": 350,
+    "note_zh": "什麼多就用什麼",
+    "note_en": "Built from whatever is abundant",
+    "protein_g": 14,
+    "carbs_g": 76,
+    "fat_g": 12,
+    "fiber_g": 8,
+    "ingredients": [
+      {
+        "veg_key": "cauliflower",
+        "name_zh": "白花椰菜",
+        "name_en": "Cauliflower",
+        "kg_per_100": 4,
+        "is_core": false
+      },
+      {
+        "veg_key": "corn",
+        "name_zh": "玉米",
+        "name_en": "Corn",
+        "kg_per_100": 4,
+        "is_core": false
+      },
+      {
+        "veg_key": "carrot",
+        "name_zh": "紅蘿蔔",
+        "name_en": "Carrot",
+        "kg_per_100": 4,
+        "is_core": false
+      },
+      {
+        "veg_key": "cabbage",
+        "name_zh": "高麗菜",
+        "name_en": "Cabbage",
+        "kg_per_100": 8,
+        "is_core": true
+      }
+    ]
+  },
+  {
+    "code": "sweet_potato_leaf",
+    "name_zh": "炒地瓜葉",
+    "name_en": "Sweet Potato Leaves",
+    "prep_min": 12,
+    "cook_min": 8,
+    "cost_ntd": 18,
+    "kcal": 280,
+    "vegetarian": true,
+    "allergens": [],
+    "max_batch": 300,
+    "note_zh": "最便宜的營養",
+    "note_en": "Cheapest nutrition on the island",
+    "protein_g": 8,
+    "carbs_g": 36,
+    "fat_g": 8,
+    "fiber_g": 6,
+    "ingredients": [
+      {
+        "veg_key": "sweet_potato_leaf",
+        "name_zh": "地瓜葉",
+        "name_en": "Sweet Potato Leaves",
+        "kg_per_100": 14,
+        "is_core": true
+      }
+    ]
+  },
+  {
+    "code": "tomato_egg",
+    "name_zh": "番茄炒蛋",
+    "name_en": "Tomato & Egg",
+    "prep_min": 20,
+    "cook_min": 15,
+    "cost_ntd": 26,
+    "kcal": 480,
+    "vegetarian": true,
+    "allergens": [
+      "egg"
+    ],
+    "max_batch": 300,
+    "note_zh": "學生最熟悉的家常味",
+    "note_en": "The most familiar home taste",
+    "protein_g": 18,
+    "carbs_g": 64,
+    "fat_g": 16,
+    "fiber_g": 4,
+    "ingredients": [
+      {
+        "veg_key": "onion",
+        "name_zh": "洋蔥",
+        "name_en": "Onion",
+        "kg_per_100": 2,
+        "is_core": false
+      },
+      {
+        "veg_key": "tomato",
+        "name_zh": "番茄",
+        "name_en": "Tomato",
+        "kg_per_100": 18,
+        "is_core": true
+      }
+    ]
+  }
+]

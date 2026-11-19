@@ -1,0 +1,123 @@
+[
+  {
+    "farmer_name": "楊梅 · 邱大哥",
+    "veg_key": "cabbage",
+    "name_zh": "高麗菜",
+    "name_en": "Cabbage",
+    "kg": 80,
+    "available_from": "2026-08-21",
+    "available_to": "2026-08-24",
+    "status": "available",
+    "created_at": "2026-08-21T16:11:26.495243+00:00"
+  },
+  {
+    "farmer_name": "新埔 · 范姊",
+    "veg_key": "carrot",
+    "name_zh": "紅蘿蔔",
+    "name_en": "Carrot",
+    "kg": 30,
+    "available_from": "2026-08-21",
+    "available_to": "2026-08-24",
+    "status": "available",
+    "created_at": "2026-08-21T16:11:26.495243+00:00"
+  },
+  {
+    "farmer_name": "公館 · 劉伯",
+    "veg_key": "tomato",
+    "name_zh": "番茄",
+    "name_en": "Tomato",
+    "kg": 25,
+    "available_from": "2026-08-21",
+    "available_to": "2026-08-24",
+    "status": "available",
+    "created_at": "2026-08-21T16:11:26.495243+00:00"
+  },
+  {
+    "farmer_name": "三義 · 徐家",
+    "veg_key": "eggplant",
+    "name_zh": "茄子",
+    "name_en": "Eggplant",
+    "kg": 18,
+    "available_from": "2026-08-21",
+    "available_to": "2026-08-24",
+    "status": "available",
+    "created_at": "2026-08-21T16:11:26.495243+00:00"
+  },
+  {
+    "farmer_name": "關西 · 羅媽媽",
+    "veg_key": "daikon",
+    "name_zh": "白蘿蔔",
+    "name_en": "Daikon",
+    "kg": 26,
+    "available_from": "2026-08-21",
+    "available_to": "2026-08-24",
+    "status": "available",
+    "created_at": "2026-08-21T16:11:26.495243+00:00"
+  },
+  {
+    "farmer_name": "cj",
+    "veg_key": "carrot",
+    "name_zh": "紅蘿蔔",
+    "name_en": "Carrot",
+    "kg": 100,
+    "available_from": "2026-08-30",
+    "available_to": "2026-09-02",
+    "status": "available",
+    "created_at": "2026-08-30T08:30:24.262875+00:00"
+  },
+  {
+    "farmer_name": "pawan",
+    "veg_key": "cabbage",
+    "name_zh": "高麗菜",
+    "name_en": "Cabbage",
+    "kg": 200,
+    "available_from": "2026-08-30",
+    "available_to": "2026-09-02",
+    "status": "available",
+    "created_at": "2026-08-30T08:30:53.181899+00:00"
+  },
+  {
+    "farmer_name": "QA Test Farm",
+    "veg_key": "broccoli",
+    "name_zh": "青花菜",
+    "name_en": "Broccoli",
+    "kg": 42,
+    "available_from": "2026-09-01",
+    "available_to": "2026-09-01",
+    "status": "available",
+    "created_at": "2026-09-01T04:48:33.761838+00:00"
+  },
+  {
+    "farmer_name": "Test Farmer QA",
+    "veg_key": "broccoli",
+    "name_zh": "青花菜",
+    "name_en": "Broccoli",
+    "kg": 25,
+    "available_from": "2026-09-01",
+    "available_to": "2026-09-01",
+    "status": "available",
+    "created_at": "2026-09-01T14:47:44.093878+00:00"
+  },
+  {
+    "farmer_name": "稽核測試 Audit Test",
+    "veg_key": "broccoli",
+    "name_zh": "青花菜",
+    "name_en": "Broccoli",
+    "kg": 15,
+    "available_from": "2026-09-02",
+    "available_to": "2026-09-02",
+    "status": "available",
+    "created_at": "2026-09-02T16:04:54.201875+00:00"
+  },
+  {
+    "farmer_name": "King",
+    "veg_key": "carrot",
+    "name_zh": "紅蘿蔔",
+    "name_en": "Carrot",
+    "kg": 200,
+    "available_from": "2026-10-27",
+    "available_to": "2026-10-27",
+    "status": "available",
+    "created_at": "2026-10-27T11:04:19.482959+00:00"
+  }
+]

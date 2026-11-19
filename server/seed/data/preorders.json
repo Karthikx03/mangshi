@@ -1,0 +1,56 @@
+[
+  {
+    "order_date": "2026-08-21",
+    "campus": "中央大學",
+    "portions": 180,
+    "created_at": "2026-08-21T16:11:26.495243+00:00"
+  },
+  {
+    "order_date": "2026-08-21",
+    "campus": "清華大學",
+    "portions": 120,
+    "created_at": "2026-08-21T16:11:26.495243+00:00"
+  },
+  {
+    "order_date": "2026-08-21",
+    "campus": "聯合大學",
+    "portions": 90,
+    "created_at": "2026-08-21T16:11:26.495243+00:00"
+  },
+  {
+    "order_date": "2026-08-31",
+    "campus": "ncu",
+    "portions": 10,
+    "created_at": "2026-08-31T18:29:55.998661+00:00"
+  },
+  {
+    "order_date": "2026-09-01",
+    "campus": "NTU Test Campus",
+    "portions": 25,
+    "created_at": "2026-09-01T04:49:48.242253+00:00"
+  },
+  {
+    "order_date": "2026-09-01",
+    "campus": "NTU Test Campus",
+    "portions": 50,
+    "created_at": "2026-09-01T05:24:31.675958+00:00"
+  },
+  {
+    "order_date": "2026-09-01",
+    "campus": "NTU Test Campus",
+    "portions": 33,
+    "created_at": "2026-09-01T05:27:30.347668+00:00"
+  },
+  {
+    "order_date": "2026-09-01",
+    "campus": "NTU Test Campus",
+    "portions": 44,
+    "created_at": "2026-09-01T05:27:44.217586+00:00"
+  },
+  {
+    "order_date": "2026-09-02",
+    "campus": "稽核測試大學",
+    "portions": 10,
+    "created_at": "2026-09-02T16:05:14.376361+00:00"
+  }
+]
